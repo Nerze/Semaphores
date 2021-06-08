@@ -1,19 +1,22 @@
-package MessagePubPrioLecteur;
+package MessagePubPrioRedacteur;
 
 import java.util.concurrent.Semaphore;
 
 public class MessageBoard {
     String[] message;
     final int nbMessage=5;
-    Semaphore info;
-    Semaphore semNbL;
-    int nbL;
+    int lecteur,demandeLecteur,redacteur,demandeRedacteur;
+    Semaphore mutex,semLec,semRed;
 
     MessageBoard(){
         message=new String[nbMessage];
-        info=new Semaphore(1);
-        semNbL=new Semaphore(1);
-        nbL=0;
+        mutex=new Semaphore(1);
+        semLec=new Semaphore(0);
+        semRed=new Semaphore(0);
+        lecteur=0;
+        demandeLecteur=0;
+        redacteur=0;
+        demandeRedacteur=0;
     }
 
     public String lire(int index){
