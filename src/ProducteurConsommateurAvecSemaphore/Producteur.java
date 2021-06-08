@@ -17,8 +17,13 @@ public class Producteur extends Thread {
                     e.printStackTrace();
                 }
                 semaphore.deposer(i);
-                semaphore.mutex.release();
                 semaphore.articles.release();
+                semaphore.mutex.release();
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

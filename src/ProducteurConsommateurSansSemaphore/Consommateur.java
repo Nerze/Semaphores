@@ -15,6 +15,7 @@ public class Consommateur extends Thread {
             try {
                 obj = producteurConsommateur.extraire();
                 System.out.println(obj);
+                Thread.sleep(100);
             }catch (Exception e){
                 System.out.println(e.getMessage());
             }
