@@ -15,8 +15,8 @@ public class Redacteur extends Thread{
                     for (int mes = 0; mes < 5; mes++) {
                         messageBoard.ecrire("Message num " + mes + " : " + i,mes);
                     }
-                    Thread.sleep(500);
                     messageBoard.info.release();
+                    Thread.sleep(500);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }

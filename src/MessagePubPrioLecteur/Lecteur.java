@@ -13,16 +13,18 @@ public class Lecteur extends Thread{
             try {
                 messageBoard.semNbL.acquire();
                 messageBoard.nbL++;
+                //System.out.println(messageBoard.nbL);
                 if(messageBoard.nbL==1){
                     messageBoard.info.acquire();
                 }
                 messageBoard.semNbL.release();
                 for (int mes = 0; mes < 5; mes++) {
                     System.out.println(messageBoard.lire(mes));
-
                 }
                 messageBoard.semNbL.acquire();
                 messageBoard.nbL--;
+                System.out.println(messageBoard.nbL);
+                //System.out.println(messageBoard.nbL);
                 if(messageBoard.nbL==0){
                     messageBoard.info.release();
                 }
