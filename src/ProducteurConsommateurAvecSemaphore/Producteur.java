@@ -8,17 +8,18 @@ public class Producteur extends Thread {
     }
 
     public void run(){
-        int objet = 3;
         while (true){
-            try {
-                semaphore.places.acquire();
-                semaphore.mutex.acquire();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            for(int i=0;i<1000;i++) {
+                try {
+                    semaphore.places.acquire();
+                    semaphore.mutex.acquire();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                semaphore.deposer(i);
+                semaphore.mutex.release();
+                semaphore.articles.release();
             }
-            semaphore.deposer(objet);
-            semaphore.mutex.release();
-            semaphore.articles.release();
         }
     }
 }

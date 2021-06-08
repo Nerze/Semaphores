@@ -17,7 +17,7 @@ public class ProducteurConsommateur {
     }
 
     void deposer(int obj){
-        System.out.println("Dépot de : "+obj+" Taille du tampon : "+articles.availablePermits());
+        //System.out.println("Dépot de : "+obj+" Taille du tampon : "+articles.availablePermits());
         tampon[articles.availablePermits()]=obj;
         try {
             Thread.sleep(100);
@@ -31,7 +31,7 @@ public class ProducteurConsommateur {
         for(int i=0;i< articles.availablePermits()-1;i++){//Décalage des données en mémoire
             tampon[i]=tampon[i+1];
         }
-        System.out.println("Retrait de "+ret+" Taille du tampon : "+articles.availablePermits());
+        //System.out.println("Retrait de "+ret+" Taille du tampon : "+articles.availablePermits());
         try {
             Thread.sleep(100);
         } catch (InterruptedException e) {

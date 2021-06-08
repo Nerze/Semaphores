@@ -19,6 +19,7 @@ public class Consommateur extends Thread {
                 e.printStackTrace();
             }
             obj = semaphore.extraire();
+            System.out.println(obj);
             semaphore.mutex.release();
             semaphore.places.release();
         }
