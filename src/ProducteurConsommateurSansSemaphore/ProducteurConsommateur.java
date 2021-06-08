@@ -4,7 +4,7 @@ import java.util.concurrent.Semaphore;
 
 public class ProducteurConsommateur {
     int[] tampon;
-    final int MAX=10;
+    final int MAX=100;
     int nombreArticleTampon;
     public ProducteurConsommateur(){
         super();
@@ -13,7 +13,13 @@ public class ProducteurConsommateur {
     }
 
     void deposer(int obj){
+        //System.out.println("Dépot de : "+obj+" Taille du tampon : "+nombreArticleTampon);
         tampon[nombreArticleTampon]=obj;
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         nombreArticleTampon ++;
     }
 
@@ -23,6 +29,12 @@ public class ProducteurConsommateur {
         int ret=tampon[0];
         for(int i=0;i< nombreArticleTampon-1;i++){//Décalage des données en mémoire
             tampon[i]=tampon[i+1];
+        }
+        //System.out.println("Retrait de "+ret+" Taille du tampon : "+nombreArticleTampon);
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         nombreArticleTampon --;
         return ret;

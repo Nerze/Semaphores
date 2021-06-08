@@ -12,11 +12,6 @@ public class Producteur extends Thread {
         while(true) {
             for(int i=0;i<1000;i++){
                 producteurConsommateur.deposer(i);
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
         }
     }
