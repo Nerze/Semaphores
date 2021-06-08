@@ -20,8 +20,13 @@ public class Consommateur extends Thread {
             }
             obj = semaphore.extraire();
             System.out.println(obj);
-            semaphore.mutex.release();
             semaphore.places.release();
+            semaphore.mutex.release();
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
