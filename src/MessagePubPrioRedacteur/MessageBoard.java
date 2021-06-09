@@ -3,10 +3,42 @@ package MessagePubPrioRedacteur;
 import java.util.concurrent.Semaphore;
 
 public class MessageBoard {
+    /**
+     * Les messages du Message Board
+     */
     String[] message;
+    /**
+     * Nombre de messages
+     */
     final int nbMessage=5;
-    int lecteur,demandeLecteur,redacteur,demandeRedacteur;
-    Semaphore mutex,semLec,semRed;
+    /**
+     * Nombre de lecteurs actifs
+     */
+    int lecteur;
+    /**
+     * Nombre de lecteurs en attente
+     */
+    int demandeLecteur;
+    /**
+     * Nombre de rédacteurs actifs
+     */
+    int redacteur;
+    /**
+     * Nombre de rédacteurs en attente
+     */
+    int demandeRedacteur;
+    /**
+     * Blocage de l'accès à message
+     */
+    Semaphore mutex;
+    /**
+     * Blocage de l'accès à lecteur et demandeLecteur
+     */
+    Semaphore semLec;
+    /**
+     * Blocage de l'accès à redacteur et demandeRedacteur
+     */
+    Semaphore semRed;
 
     MessageBoard(){
         message=new String[nbMessage];
@@ -21,7 +53,7 @@ public class MessageBoard {
 
     public String lire(int index){
         try {
-            Thread.sleep(100);
+            Thread.sleep(100);//Délai artificiel de lecture
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -31,7 +63,7 @@ public class MessageBoard {
 
     public void ecrire(String mes,int index){
         try {
-            Thread.sleep(100);
+            Thread.sleep(100);//Délai artificiel d'écriture
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

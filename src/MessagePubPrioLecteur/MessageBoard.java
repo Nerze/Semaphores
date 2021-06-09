@@ -3,10 +3,25 @@ package MessagePubPrioLecteur;
 import java.util.concurrent.Semaphore;
 
 public class MessageBoard {
+    /**
+     * Les messages du Message Board
+     */
     String[] message;
+    /**
+     * Nombre de messages
+     */
     final int nbMessage=5;
+    /**
+     * Blocage de l'accès à message
+     */
     Semaphore info;
+    /**
+     * Blocage de l'accès au nombre de lecteurs
+     */
     Semaphore semNbL;
+    /**
+     * Nombre de lecteurs actifs
+     */
     int nbL;
 
     MessageBoard(){
@@ -18,7 +33,7 @@ public class MessageBoard {
 
     public String lire(int index){
         try {
-            Thread.sleep(100);
+            Thread.sleep(100);//Délai artificiel de lecture
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -28,7 +43,7 @@ public class MessageBoard {
 
     public void ecrire(String mes,int index){
         try {
-            Thread.sleep(100);
+            Thread.sleep(100);//Délai artificiel d'écriture
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
